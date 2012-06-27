@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PDFViewController : UIViewController
+@interface PDFViewController : UIViewController <UIDocumentInteractionControllerDelegate>
+
+@property (strong, nonatomic) NSString *pdf;
 
 @end

@@ -23,15 +23,15 @@
 		52EC14BD159A4F1100701B80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52EC14BF159A4F1100701B80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		52EC14C1159A4F1100701B80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		52EC14C5159A4F1100701B80 /* openPDF-Info.plist */ = {isa = PBXFileReference; path = "openPDF-Info.plist"; sourceTree = "<group>"; };
+		52EC14C5159A4F1100701B80 /* openPDF-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "openPDF-Info.plist"; sourceTree = "<group>"; };
 		52EC14C7159A4F1100701B80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52EC14C9159A4F1100701B80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		52EC14CB159A4F1100701B80 /* openPDF-Prefix.pch */ = {isa = PBXFileReference; path = "openPDF-Prefix.pch"; sourceTree = "<group>"; };
-		52EC14CC159A4F1100701B80 /* PDFAppDelegate.h */ = {isa = PBXFileReference; path = PDFAppDelegate.h; sourceTree = "<group>"; };
+		52EC14CB159A4F1100701B80 /* openPDF-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "openPDF-Prefix.pch"; sourceTree = "<group>"; };
+		52EC14CC159A4F1100701B80 /* PDFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFAppDelegate.h; sourceTree = "<group>"; };
 		52EC14CD159A4F1100701B80 /* PDFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFAppDelegate.m; sourceTree = "<group>"; };
 		52EC14D0159A4F1100701B80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		52EC14D3159A4F1100701B80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		52EC14D5159A4F1100701B80 /* PDFViewController.h */ = {isa = PBXFileReference; path = PDFViewController.h; sourceTree = "<group>"; };
+		52EC14D5159A4F1100701B80 /* PDFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
 		52EC14D6159A4F1100701B80 /* PDFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
