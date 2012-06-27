@@ -41,7 +41,7 @@
     
     // Get file again from Documents directory
     NSURL *fileURL = [NSURL fileURLWithPath:appFile];
-    UIDocumentInteractionController *controller = [UIDocumentInteractionController  interactionControllerWithURL:fileURL];
+    UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
     controller.delegate = self;
     controller.UTI = @"com.adobe.pdf";
     CGRect rect = CGRectMake(0, 0, 300, 300);
