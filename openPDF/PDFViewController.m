@@ -7,6 +7,8 @@
 //
 
 #import "PDFViewController.h"
+#import "SVProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface PDFViewController ()
 
@@ -28,24 +30,38 @@
     NSString *previewDocumentFileName = [parts lastObject];
     NSLog(@"The file name is %@", previewDocumentFileName);
     
-    // Get file online
-    NSData *fileOnline = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:self.pdf]];
+//    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//    [loading startAnimating];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:loading];
+    [SVProgressHUD show];
     
-    // Write file to the Documents directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    if (!documentsDirectory) {NSLog(@"Documents directory not found!");}
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:previewDocumentFileName];
-    [fileOnline writeToFile:appFile atomically:YES];
-    NSLog(@"Resource file '%@' has been written to the Documents directory from online", previewDocumentFileName);
-    
-    // Get file again from Documents directory
-    NSURL *fileURL = [NSURL fileURLWithPath:appFile];
-    UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-    controller.delegate = self;
-    controller.UTI = @"com.adobe.pdf";
-    CGRect rect = CGRectMake(0, 0, 300, 300);
-    [controller presentPreviewAnimated:YES];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickr downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        // Get file online
+        NSData *fileOnline = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:self.pdf]];
+        // Write file to the Documents directory
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        if (!documentsDirectory) {NSLog(@"Documents directory not found!");}
+        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:previewDocumentFileName];
+        [fileOnline writeToFile:appFile atomically:YES];
+        NSLog(@"Resource file '%@' has been written to the Documents directory from online", previewDocumentFileName);
+        
+        // Get file again from Documents directory
+        NSURL *fileURL = [NSURL fileURLWithPath:appFile];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+            controller.delegate = self;
+            controller.UTI = @"com.adobe.pdf";
+            //CGRect rect = CGRectMake(0, 0, 300, 300);
+            [controller presentPreviewAnimated:YES];
+//            [loading stopAnimating];
+//            [loading removeFromSuperview];
+            [SVProgressHUD dismiss];
+        });
+    });
+
+
 }
 
 - (void) documentInteractionController: (UIDocumentInteractionController *) controller willBeginSendingToApplication: (NSString *) application {
