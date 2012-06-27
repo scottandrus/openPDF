@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.pdf = @"http://cultux.com/wp-content/uploads/offer.pdf";
+    self.pdf = @"http://cran.r-project.org/doc/manuals/R-intro.pdf";
 }
 
 - (IBAction)savePDFPressed:(id)sender {
@@ -45,7 +45,7 @@
     controller.delegate = self;
     controller.UTI = @"com.adobe.pdf";
     CGRect rect = CGRectMake(0, 0, 300, 300);
-    [controller presentOpenInMenuFromRect:rect inView:self.view animated:YES];
+    [controller presentPreviewAnimated:YES];
 }
 
 - (void) documentInteractionController: (UIDocumentInteractionController *) controller willBeginSendingToApplication: (NSString *) application {
@@ -57,6 +57,11 @@
 
 - (void)documentInteractionControllerDidDismissOpenInMenu:(UIDocumentInteractionController *)controller {
     
+}
+
+-(UIViewController*)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
+	
+	return self;
 }
 
 - (void)viewDidUnload
